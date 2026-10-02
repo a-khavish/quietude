@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Quietude horizontal lockup: mark, wordmark, motto.
+
+  THE WORDMARK IS DRAWN, NOT SET. Every letter below is a <path>, not
+  <text> with a font-family. A logo that depends on a font being
+  installed is a logo that renders as Times on half the machines it
+  lands on, and this project has already shipped one bug from assuming
+  a webfont would be there. Paths render identically everywhere with
+  nothing to download. (The motto underneath is the one exception: it is
+  real text in the generic `monospace` stack, which every system
+  resolves to something - it is a caption, not the identity, and
+  outlining 25 characters of it would cost more than it is worth.)
+
+  THE LETTERFORMS are monoline geometric capitals on a strict grid:
+
+    centreline box   x 6..54, y 6..78      stroke 12
+    visual letter    60 wide x 84 tall
+    gap              24, so the advance is 84
+
+  Round letters (Q, U, D) are built from half-ellipses of ry 36, so
+  they reach full cap height instead of sitting short the way a true
+  circle would. The I is set on its own narrow advance - at the full 84
+  it punched a hole in the middle of the word.
+
+  Letter origins are kerned rather than metric, because a letter with
+  an open flank needs less room than one with a stem:
+
+    Q 0 | U 80 | I 164 | E 200 | T 276 | U 352 | D 436 | E 517
+
+  Gaps: 24 between two stems, 20-21 where a round flank faces one, and
+  16 either side of the T. The T is the only letter here that is empty
+  under its full-width crossbar, and the eye reads that emptiness as
+  part of the gap - left on the common 24 the word visibly fell apart
+  into "QUIE TUDE".
+
+  The wordmark is 577 x 84 overall.
+
+  The forms are deliberately calm - no chamfers, no angled cuts, no
+  outward flare. The interface's Orbitron headings supply the HUD edge;
+  the wordmark is the quiet thing it is named after.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 805 216" width="805" height="216">
+  <defs>
+    <radialGradient id="lg-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#2de2e6" stop-opacity="0.26"/>
+      <stop offset="45%"  stop-color="#2de2e6" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#2de2e6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg-bloom" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#8ff9ff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#8ff9ff" stop-opacity="0"/>
+    </radialGradient>
+    <!-- userSpaceOnUse in the mark's own 512 coordinates - see icon.svg
+         for why a proportional gradient on a flat bar renders as
+         nothing. -->
+    <linearGradient id="lg-line" gradientUnits="userSpaceOnUse"
+                    x1="206" y1="256" x2="306" y2="256">
+      <stop offset="0%"   stop-color="#8ff9ff"/>
+      <stop offset="50%"  stop-color="#f2feff"/>
+      <stop offset="100%" stop-color="#8ff9ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ================= the mark =================
+       icon.svg's chamber at 0.34 scale, minus the plate: the lockup is
+       a dark-background asset and does not need the icon's own ground.
+       Drawn in the icon's 512 coordinates so the two can never drift -
+       the only thing that changes here is the scale factor. The mark
+       lands at x 24..148, vertically centred on the wordmark. -->
+  <g transform="translate(-0.99, 18.96) scale(0.34)">
+    <circle cx="256" cy="256" r="150" fill="url(#lg-core)"/>
+
+    <!-- ripples: round at the source, square by the time they reach
+         the wall -->
+    <g fill="none" stroke="#2de2e6">
+      <rect x="180" y="180" width="152" height="152" rx="64" stroke-width="7"   opacity="0.50"/>
+      <rect x="146" y="146" width="220" height="220" rx="72" stroke-width="5.5" opacity="0.30"/>
+      <rect x="114" y="114" width="284" height="284" rx="76" stroke-width="4"   opacity="0.16"/>
+    </g>
+
+    <!-- the still line -->
+    <ellipse cx="256" cy="256" rx="100" ry="46" fill="url(#lg-bloom)"/>
+    <path d="M 206 256 H 306"
+          fill="none" stroke="url(#lg-line)" stroke-width="13" stroke-linecap="round"/>
+
+    <!-- the sealed wall, with its corners braced -->
+    <rect x="84" y="84" width="344" height="344" rx="72"
+          fill="none" stroke="#2de2e6" stroke-width="13" opacity="0.92"/>
+    <g fill="none" stroke="#2de2e6" stroke-width="21" stroke-linecap="butt">
+      <path d="M 84 196 V 156 A 72 72 0 0 1 156 84 H 196"/>
+      <path d="M 316 84 H 356 A 72 72 0 0 1 428 156 V 196"/>
+      <path d="M 428 316 V 356 A 72 72 0 0 1 356 428 H 316"/>
+      <path d="M 196 428 H 156 A 72 72 0 0 1 84 356 V 316"/>
+    </g>
+  </g>
+
+  <!-- ================= wordmark: Q U I E T U D E =================
+       600 x 84, cap top at y 64, baseline at y 148. -->
+  <g transform="translate(204, 64)" fill="none" stroke="#8ff9ff"
+     stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter">
+
+    <!-- Q - full-height ellipse (rx 24, ry 36) plus a tail that starts
+         inside the bowl and crosses the stroke on its way out. -->
+    <g transform="translate(0,0)">
+      <path d="M 30 6 A 24 36 0 0 1 30 78 A 24 36 0 0 1 30 6 Z"/>
+      <path d="M 33 57 L 56 83"/>
+    </g>
+
+    <!-- U - two stems joined by a half-ellipse at the foot. -->
+    <g transform="translate(80,0)">
+      <path d="M 6 6 V 48 A 24 30 0 0 0 54 48 V 6"/>
+    </g>
+
+    <!-- I - a bare stem. Set flush to the left of its box and given
+         an advance of only 36, so the gaps either side of it stay the
+         same 24 as between any two stems. Centred in a full-width box it
+         punched a hole through the middle of the word, and on a full 84
+         advance it collided with the E. -->
+    <g transform="translate(164,0)">
+      <path d="M 6 6 V 78"/>
+    </g>
+
+    <!-- E - one path for the spine and the two full arms; the middle
+         arm is drawn short, which is what keeps an E from reading as a
+         comb. -->
+    <g transform="translate(200,0)">
+      <path d="M 54 6 H 6 V 78 H 54"/>
+      <path d="M 6 42 H 46"/>
+    </g>
+
+    <!-- T -->
+    <g transform="translate(276,0)">
+      <path d="M 6 6 H 54"/>
+      <path d="M 30 6 V 78"/>
+    </g>
+
+    <!-- U -->
+    <g transform="translate(352,0)">
+      <path d="M 6 6 V 48 A 24 30 0 0 0 54 48 V 6"/>
+    </g>
+
+    <!-- D - stem, short top and bottom bars, half-ellipse bowl. -->
+    <g transform="translate(436,0)">
+      <path d="M 6 6 V 78 H 20 A 34 36 0 0 0 20 6 Z"/>
+    </g>
+
+    <!-- E -->
+    <g transform="translate(517,0)">
+      <path d="M 54 6 H 6 V 78 H 54"/>
+      <path d="M 6 42 H 46"/>
+    </g>
+  </g>
+
+  <!-- ================= motto ================= -->
+  <text x="206" y="196" fill="#6c8a92"
+        font-family="ui-monospace, 'DejaVu Sans Mono', monospace"
+        font-size="19" letter-spacing="3.1">Nothing leaves this room.</text>
+</svg>

@@ -1,0 +1,98 @@
+<!--
+  Quietude - a personal assistant that runs on your own machine.
+  Copyright (C) 2026 Khavish Auckaloo
+  SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<!--
+  icon.svg - the application icon, for 48px and up.
+
+  The mark: a sealed room seen from above. An unbroken wall with braced
+  corners, ripples spreading from the centre and damping before they
+  reach it, and a still level line at the heart where a waveform would
+  be. Sound happens in here and settles before it gets anywhere.
+
+  Why the plate is bright.
+  The first version of this icon was the interface's own palette taken
+  literally: a near-black plate with thin cyan strokes on it. It looked
+  right on a page and was nearly invisible in a dock, because a dock is
+  itself a dark strip - measured at 11% of pixels meaningfully different
+  from a #2b2b2b background, which renders as an empty black square.
+
+  So the weight is inverted. The plate carries the colour and the mark
+  is cut out of it in near-black. An icon cannot assume the background
+  it will be drawn on, so it has to bring its own contrast; that is the
+  whole job. Measured at over 90% on dark docks and light ones alike.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+     width="512" height="512" role="img" aria-label="Quietude">
+
+  <defs>
+    <!-- Lit from the top left, the way every other icon in a dock is. -->
+    <linearGradient id="plate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#5ff4f7"/>
+      <stop offset="0.45" stop-color="#2de2e6"/>
+      <stop offset="1"    stop-color="#0b7f92"/>
+    </linearGradient>
+
+    <!-- A soft inner glow at the centre, so the still line sits in
+         light rather than on flat colour. -->
+    <radialGradient id="core" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0"   stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="1"   stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- The plate. 22% corner radius, which is close enough to the
+       rounded-square most desktops expect that it sits comfortably in a
+       row of other icons. -->
+  <rect x="26" y="26" width="460" height="460" rx="104" fill="url(#plate)"/>
+
+  <!-- A darker inner edge, so the plate reads as an object with a lip
+       rather than a flat swatch. -->
+  <rect x="26" y="26" width="460" height="460" rx="104"
+        fill="none" stroke="#06434f" stroke-width="10" stroke-opacity="0.45"/>
+
+  <g transform="translate(256 256)">
+
+    <circle r="150" fill="url(#core)"/>
+
+    <!-- The ripples: three, damping as they travel out, and tightening
+         from round at the centre towards the shape of the room at the
+         edge. Drawn in the dark ink so they cut out of the plate. -->
+    <g fill="none" stroke="#04222b" stroke-linecap="round">
+      <rect x="-146" y="-146" width="292" height="292" rx="96"
+            stroke-width="12" stroke-opacity="0.26"/>
+      <rect x="-108" y="-108" width="216" height="216" rx="80"
+            stroke-width="13" stroke-opacity="0.40"/>
+      <rect x="-70"  y="-70"  width="140" height="140" rx="62"
+            stroke-width="14" stroke-opacity="0.60"/>
+    </g>
+
+    <!-- The chamber wall: one continuous boundary, with the four
+         corners braced more heavily. The brace is what carries the
+         shape at 48px once the ripples have gone soft. -->
+    <rect x="-190" y="-190" width="380" height="380" rx="112"
+          fill="none" stroke="#04222b" stroke-width="22"/>
+
+    <g stroke="#04222b" stroke-width="34" stroke-linecap="round" fill="none">
+      <!-- top left -->
+      <path d="M -190 -118 L -190 -140"/>
+      <path d="M -118 -190 L -140 -190"/>
+      <!-- top right -->
+      <path d="M 190 -118 L 190 -140"/>
+      <path d="M 118 -190 L 140 -190"/>
+      <!-- bottom left -->
+      <path d="M -190 118 L -190 140"/>
+      <path d="M -118 190 L -140 190"/>
+      <!-- bottom right -->
+      <path d="M 190 118 L 190 140"/>
+      <path d="M 118 190 L 140 190"/>
+    </g>
+
+    <!-- The still line. The only pure white in the mark, and the thing
+         the eye lands on first. -->
+    <rect x="-86" y="-13" width="172" height="26" rx="13" fill="#04222b"/>
+    <rect x="-78" y="-8"  width="156" height="16" rx="8"  fill="#ffffff"/>
+  </g>
+</svg>

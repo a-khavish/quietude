@@ -1,0 +1,66 @@
+/*
+ * Quietude - a personal assistant that runs on your own machine.
+ * Copyright (C) 2026 Khavish Auckaloo
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+/*
+ * fonts.css
+ * Local @font-face declarations.
+ *
+ * The Windows build's stylesheet opened with an @import from
+ * fonts.googleapis.com, which meant a "fully local, nothing leaves your
+ * machine" assistant made a request to Google on every single load, and
+ * rendered in a fallback serif with no internet. For a project whose
+ * entire premise is that nothing leaves the machine, that's a real bug,
+ * not a nitpick.
+ *
+ * install.sh downloads the four faces once into public/fonts/. They live
+ * in public/ rather than src/assets/ on purpose: Vite resolves and
+ * validates asset imports at build time, so a font that failed to
+ * download would break the whole build. Files under public/ are copied
+ * verbatim and referenced by URL, so a missing one is a 404 at runtime
+ * and the browser quietly uses the next font in the stack instead.
+ *
+ * So the fallbacks below are a real code path, not decoration: with no
+ * fonts installed Quietude renders in the system monospace and a generic
+ * sans, which looks plainer but is completely usable. font-display:swap
+ * means text paints immediately either way rather than flashing
+ * invisible while a font loads.
+ */
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/fonts/orbitron-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/fonts/orbitron-900.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* DejaVu is on essentially every Linux desktop; the generic keywords
+     behind it cover the rest. */
+  --font-display: 'Orbitron', 'DejaVu Sans', 'Liberation Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'DejaVu Sans Mono',
+               'Liberation Mono', monospace;
+}

@@ -1,0 +1,42 @@
+<!--
+  Quietude - a personal assistant that runs on your own machine.
+  Copyright (C) 2026 Khavish Auckaloo
+  SPDX-License-Identifier: GPL-3.0-or-later
+-->
+<!--
+  icon-small.svg - 16px to 32px.
+
+  Same mark, with everything that turns to mush at that size taken out:
+  the three ripples, the corner bracing and the inner glow all go. What
+  is left is a bright plate, one heavy wall, and the still line - which
+  is the part that has to survive, because it is the only thing in the
+  mark that is a single recognisable stroke.
+
+  Weights are heavier than a straight scale of the full icon would give.
+  A stroke that reads as 22 units at 512px disappears at 16px; these are
+  drawn for the size they will actually be seen at.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+     width="512" height="512" role="img" aria-label="Quietude">
+
+  <defs>
+    <linearGradient id="plateSmall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#5ff4f7"/>
+      <stop offset="0.45" stop-color="#2de2e6"/>
+      <stop offset="1"    stop-color="#0b7f92"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="20" y="20" width="472" height="472" rx="108" fill="url(#plateSmall)"/>
+
+  <g transform="translate(256 256)">
+    <!-- One wall, heavier than the full icon's, and pulled in a little
+         so it does not fight the plate's own corner radius at 16px. -->
+    <rect x="-168" y="-168" width="336" height="336" rx="100"
+          fill="none" stroke="#04222b" stroke-width="40"/>
+
+    <!-- The still line, thicker in proportion for the same reason. -->
+    <rect x="-84" y="-22" width="168" height="44" rx="22" fill="#04222b"/>
+    <rect x="-72" y="-13" width="144" height="26" rx="13" fill="#ffffff"/>
+  </g>
+</svg>

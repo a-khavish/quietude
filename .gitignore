@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+venv/
+.venv/
+
+# Frontend
+node_modules/
+frontend/dist/
+
+# Downloaded by install.sh - not committed. Nothing breaks without them
+# (src/styles/fonts.css declares fallbacks), and they're not ours to
+# redistribute.
+frontend/public/fonts/*.woff2
+
+# Quietude's own data never lives in the repo - it's under ~/.local/share/quietude.
+# This is here only to catch a stray run from an older layout.
+data/
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+docs/images/*.mp4
+
+# One-off maintainer script, kept out of the public tree
+finish-release.sh
