@@ -1,0 +1,16 @@
+{
+  "name": "quietude",
+  "productName": "Quietude",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The window Quietude's interface is drawn in.",
+  "license": "GPL-3.0-or-later",
+  "author": "Khavish Auckaloo",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^38.0.0"
+  }
+}

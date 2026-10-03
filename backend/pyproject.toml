@@ -1,0 +1,49 @@
+[project]
+name = "quietude"
+version = "1.0.0"
+description = "A personal assistant for Linux that runs entirely on your own machine"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-or-later" }
+authors = [{ name = "Khavish Auckaloo" }]
+keywords = ["assistant", "offline", "privacy", "speech-recognition", "linux"]
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Environment :: X11 Applications :: GTK",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dynamic = ["dependencies", "optional-dependencies"]
+
+[project.urls]
+Homepage = "https://github.com/a-khavish/quietude"
+Source = "https://github.com/a-khavish/quietude"
+Issues = "https://github.com/a-khavish/quietude/issues"
+
+[project.scripts]
+quietude = "quietude.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+# The voice stack is an extra rather than a dependency, so `pip install
+# quietude` gives a working assistant even where the speech wheels
+# aren't available for the interpreter - which is the whole reason it's
+# a separate file. Install it with:  pip install -e ".[voice]"
+optional-dependencies.voice = { file = ["requirements-voice.txt"] }
+
+[tool.setuptools.packages.find]
+include = ["quietude*"]
+
+[tool.setuptools.package-data]
+quietude = ["assets/haarcascades/*.xml"]
+
+# The licence travels with the package. Distributing GPL code without
+# its terms attached is the one packaging mistake that actually matters.
+[tool.setuptools]
+license-files = ["LICENSE"]

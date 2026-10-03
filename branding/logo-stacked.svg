@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Quietude logo, stacked. For square and near-square spaces - a splash
+  screen, a README header, an about box.
+
+  Same mark and the same drawn letterforms as logo.svg, on the same
+  grid and with the same kerning; only the arrangement and the mark's
+  scale differ. See logo.svg for the construction of the wordmark and
+  why it is paths rather than <text>.
+
+  Vertical rhythm: mark 26..216, a 40-unit gap, wordmark 256..340,
+  motto baseline 390. The mark is set larger here than in the
+  horizontal lockup (0.52 against 0.34): stacked, it is carrying the
+  whole top half of the composition rather than sitting beside the
+  name, and at the horizontal scale it looked stranded above it.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420">
+  <defs>
+    <radialGradient id="sg-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#2de2e6" stop-opacity="0.26"/>
+      <stop offset="45%"  stop-color="#2de2e6" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#2de2e6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sg-bloom" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#8ff9ff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#8ff9ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sg-line" gradientUnits="userSpaceOnUse"
+                    x1="206" y1="256" x2="306" y2="256">
+      <stop offset="0%"   stop-color="#8ff9ff"/>
+      <stop offset="50%"  stop-color="#f2feff"/>
+      <stop offset="100%" stop-color="#8ff9ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ================= the mark =================
+       icon.svg's chamber at 0.52 scale, minus the plate, centred on
+       x 340. Drawn in the icon's own 512 coordinates so the two cannot
+       drift apart. -->
+  <g transform="translate(206.88, -12.22) scale(0.52)">
+    <circle cx="256" cy="256" r="150" fill="url(#sg-core)"/>
+
+    <!-- ripples: round at the source, square by the time they reach
+         the wall -->
+    <g fill="none" stroke="#2de2e6">
+      <rect x="180" y="180" width="152" height="152" rx="64" stroke-width="7"   opacity="0.50"/>
+      <rect x="146" y="146" width="220" height="220" rx="72" stroke-width="5.5" opacity="0.30"/>
+      <rect x="114" y="114" width="284" height="284" rx="76" stroke-width="4"   opacity="0.16"/>
+    </g>
+
+    <!-- the still line -->
+    <ellipse cx="256" cy="256" rx="100" ry="46" fill="url(#sg-bloom)"/>
+    <path d="M 206 256 H 306"
+          fill="none" stroke="url(#sg-line)" stroke-width="13" stroke-linecap="round"/>
+
+    <!-- the sealed wall, with its corners braced -->
+    <rect x="84" y="84" width="344" height="344" rx="72"
+          fill="none" stroke="#2de2e6" stroke-width="13" opacity="0.92"/>
+    <g fill="none" stroke="#2de2e6" stroke-width="21" stroke-linecap="butt">
+      <path d="M 84 196 V 156 A 72 72 0 0 1 156 84 H 196"/>
+      <path d="M 316 84 H 356 A 72 72 0 0 1 428 156 V 196"/>
+      <path d="M 428 316 V 356 A 72 72 0 0 1 356 428 H 316"/>
+      <path d="M 196 428 H 156 A 72 72 0 0 1 84 356 V 316"/>
+    </g>
+  </g>
+
+  <!-- ================= wordmark: Q U I E T U D E =================
+       577 x 84, centred on x 340 (so it starts at 51.5), cap top at
+       y 256, baseline at y 340. Identical grid and kerning to
+       logo.svg: Q 0 | U 80 | I 164 | E 200 | T 276 | U 352 | D 436 |
+       E 517. -->
+  <g transform="translate(51.5, 256)" fill="none" stroke="#8ff9ff"
+     stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter">
+
+    <!-- Q -->
+    <g transform="translate(0,0)">
+      <path d="M 30 6 A 24 36 0 0 1 30 78 A 24 36 0 0 1 30 6 Z"/>
+      <path d="M 33 57 L 56 83"/>
+    </g>
+
+    <!-- U -->
+    <g transform="translate(80,0)">
+      <path d="M 6 6 V 48 A 24 30 0 0 0 54 48 V 6"/>
+    </g>
+
+    <!-- I -->
+    <g transform="translate(164,0)">
+      <path d="M 6 6 V 78"/>
+    </g>
+
+    <!-- E -->
+    <g transform="translate(200,0)">
+      <path d="M 54 6 H 6 V 78 H 54"/>
+      <path d="M 6 42 H 46"/>
+    </g>
+
+    <!-- T -->
+    <g transform="translate(276,0)">
+      <path d="M 6 6 H 54"/>
+      <path d="M 30 6 V 78"/>
+    </g>
+
+    <!-- U -->
+    <g transform="translate(352,0)">
+      <path d="M 6 6 V 48 A 24 30 0 0 0 54 48 V 6"/>
+    </g>
+
+    <!-- D -->
+    <g transform="translate(436,0)">
+      <path d="M 6 6 V 78 H 20 A 34 36 0 0 0 20 6 Z"/>
+    </g>
+
+    <!-- E -->
+    <g transform="translate(517,0)">
+      <path d="M 54 6 H 6 V 78 H 54"/>
+      <path d="M 6 42 H 46"/>
+    </g>
+  </g>
+
+  <!-- ================= motto ================= -->
+  <text x="340" y="390" fill="#6c8a92" text-anchor="middle"
+        font-family="ui-monospace, 'DejaVu Sans Mono', monospace"
+        font-size="19" letter-spacing="3.1">Nothing leaves this room.</text>
+</svg>

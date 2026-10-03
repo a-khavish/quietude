@@ -1,0 +1,17 @@
+{
+  "name": "Quietude",
+  "short_name": "Quietude",
+  "description": "Nothing leaves this room.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#05080d",
+  "theme_color": "#05080d",
+  "orientation": "any",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    { "src": "/icons/quietude-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/quietude-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/quietude-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

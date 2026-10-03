@@ -1,0 +1,12 @@
+# Optional: conversation mode.
+#
+# This is the one part of Quietude that sends what you say to a third party
+# (Google). It is off by default, needs your own API key, and is a
+# separate file so that not installing it is a real, enforceable choice
+# rather than a setting you have to trust.
+#
+#   pip install -r requirements-gemini.txt
+#
+# Then, in Quietude:  gemini api key "YOUR_KEY"
+
+google-genai==1.2.0

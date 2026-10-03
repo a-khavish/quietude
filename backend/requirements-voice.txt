@@ -1,0 +1,31 @@
+# Quietude - the local voice stack (speech recognition and synthesis)
+#
+# Separate from requirements.txt because it is genuinely optional, and
+# because keeping it separate is what stops one unavailable wheel from
+# taking down an install that didn't need it. install.sh installs this
+# best-effort: if it fails, Quietude is still installed and text chat works
+# normally, and she says plainly that voice is unavailable rather than
+# pretending to listen.
+#
+# All three are local and offline. Nothing here talks to a network once
+# the model files are downloaded.
+
+# Streaming wake-word and interrupt-phrase detection. A py3-none wheel,
+# so it works on any interpreter.
+vosk>=0.3.45
+
+# Accurate one-shot transcription of a finished utterance. Pure Python
+# itself, but pulls ctranslate2, which ships interpreter-specific wheels
+# - so a new Python needs a new ctranslate2, which is why there is no
+# upper bound here.
+faster-whisper>=1.1
+
+# Neural speech synthesis, offline on CPU.
+#
+# The floor of 1.8 is not cosmetic and must not be lowered. Releases
+# before 1.8 depend on piper-phonemize, a C++ extension whose wheels
+# stop at older Python versions - on Python 3.14 there is no wheel and
+# no source fallback, so pip fails outright. 1.8 dropped that dependency
+# (it bundles espeak-ng data directly and needs only onnxruntime), and
+# ships as cp39-abi3, which works on every Python from 3.9 up.
+piper-tts>=1.8

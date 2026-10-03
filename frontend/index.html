@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- No remote font stylesheet. The Windows build pulled Orbitron and
+         JetBrains Mono from Google Fonts on every load, which quietly
+         made a "fully offline" assistant render wrong without internet.
+         install.sh downloads them once into public/fonts/; see
+         src/styles/fonts.css for the @font-face rules and why they live
+         in public/ rather than src/assets/. -->
+    <!-- The manifest is what lets a Chromium-family browser offer
+         "Install" and give Quietude a launcher entry and her own window,
+         for anyone who'd rather do it that way than let the backend
+         open the window. theme-color paints the window chrome to match
+         the interface instead of leaving a white strip above it. -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#05080d" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icons/quietude-512.png" />
+    <link rel="apple-touch-icon" href="/icons/quietude-192.png" />
+    <!-- Short, and plain ASCII: this is the window title in the dock,
+         the task switcher and the window list. -->
+    <title>Quietude</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
